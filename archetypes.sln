@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Archetypes", "Archetypes", "{F00F5E1C-62AE-4531-B2F0-27D4DF1DEB6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quantity", "Archetypes\Quantity\Quantity.csproj", "{F11DCCEF-4883-4380-A7A6-0FE3059CC680}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Archetypes.Test", "Archetypes.Test", "{9896B6CE-4F34-4B7F-BD45-E1E90175A156}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quantity.Test", "Archetypes.Test\Quantity.Test\Quantity.Test.csproj", "{613DD958-9282-43F2-88D3-339EA7866139}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F11DCCEF-4883-4380-A7A6-0FE3059CC680}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F11DCCEF-4883-4380-A7A6-0FE3059CC680}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F11DCCEF-4883-4380-A7A6-0FE3059CC680}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F11DCCEF-4883-4380-A7A6-0FE3059CC680}.Release|Any CPU.Build.0 = Release|Any CPU
+		{613DD958-9282-43F2-88D3-339EA7866139}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{613DD958-9282-43F2-88D3-339EA7866139}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{613DD958-9282-43F2-88D3-339EA7866139}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{613DD958-9282-43F2-88D3-339EA7866139}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F11DCCEF-4883-4380-A7A6-0FE3059CC680} = {F00F5E1C-62AE-4531-B2F0-27D4DF1DEB6E}
+		{613DD958-9282-43F2-88D3-339EA7866139} = {9896B6CE-4F34-4B7F-BD45-E1E90175A156}
+	EndGlobalSection
+EndGlobal
