@@ -3,7 +3,7 @@ image:
 
 tasks:
   - name: Restore & Build
-    init: |
+    command: |
       dotnet restore
       dotnet build
 
