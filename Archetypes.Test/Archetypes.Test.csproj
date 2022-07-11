@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Archetypes\Quantity\Quantity.csproj" />
+    <ProjectReference Include="..\Archetypes\Archetypes.csproj" />
   </ItemGroup>
 
 </Project>
