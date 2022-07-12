@@ -1,6 +1,6 @@
-namespace Archetypes.SI.Units.Base;
+namespace Archetypes.Quantity.SystemOfUnit.SI.Units.Base;
 
-public class Kilogram: SIBaseUnit
+public class Kilogram : SIBaseUnit
 {
     public override string GetName()
     {
@@ -16,5 +16,4 @@ public class Kilogram: SIBaseUnit
     {
         return "Unit of mass.";
     }
-
 }

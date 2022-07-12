@@ -1,4 +1,4 @@
-namespace Archetypes;
+namespace Archetypes.Quantity;
 
 public class DerivedUnitTerm
 {

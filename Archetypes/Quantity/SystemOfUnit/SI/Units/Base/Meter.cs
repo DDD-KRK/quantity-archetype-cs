@@ -1,4 +1,4 @@
-namespace Archetypes.SI.Units.Base;
+namespace Archetypes.Quantity.SystemOfUnit.SI.Units.Base;
 
 public class Meter : SIBaseUnit
 {
@@ -16,5 +16,4 @@ public class Meter : SIBaseUnit
     {
         return "Unit of the path travelled by light...";
     }
-
 }

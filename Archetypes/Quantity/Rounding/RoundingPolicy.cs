@@ -1,6 +1,4 @@
-using System.Diagnostics.CodeAnalysis;
-
-namespace Archetypes.Quantity;
+namespace Archetypes.Quantity.Rounding;
 
 public class RoundingPolicy
 {

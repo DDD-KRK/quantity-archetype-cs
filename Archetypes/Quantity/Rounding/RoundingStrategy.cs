@@ -1,4 +1,4 @@
-namespace Archetypes.Quantity;
+namespace Archetypes.Quantity.Rounding;
 
 public enum RoundingStrategy
 {

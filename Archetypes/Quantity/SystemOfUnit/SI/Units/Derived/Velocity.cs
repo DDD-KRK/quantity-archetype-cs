@@ -1,6 +1,6 @@
-using Archetypes.SI.Units.Base;
+using Archetypes.Quantity.SystemOfUnit.SI.Units.Base;
 
-namespace Archetypes.SI.Units.Derived;
+namespace Archetypes.Quantity.SystemOfUnit.SI.Units.Derived;
 
 // todo @see DerivedUnit
 class Velocity : SIDerivedUnit

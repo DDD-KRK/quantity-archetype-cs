@@ -1,4 +1,4 @@
-namespace Archetypes;
+namespace Archetypes.Quantity;
 
 //todo covnert back to normal class and create factory for derived units
 public abstract class DerivedUnit : Unit

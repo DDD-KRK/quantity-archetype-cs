@@ -1,19 +1,19 @@
-namespace Archetypes.SI.Units.Base;
+namespace Archetypes.Quantity.SystemOfUnit.SI.Units.Base;
 
-public class Gram: SIBaseUnit
+class Second : SIBaseUnit
 {
     public override string GetName()
     {
-        return "gram";
+        return "second";
     }
 
     public override string GetSymbol()
     {
-        return "h";
+        return "s";
     }
 
     public override string GetDefinition()
     {
-        return "Small unit of mass.";
+        return "... :)";
     }
 }

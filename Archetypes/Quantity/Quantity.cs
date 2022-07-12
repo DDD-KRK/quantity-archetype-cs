@@ -1,3 +1,5 @@
+using Archetypes.Quantity.Rounding;
+
 namespace Archetypes.Quantity;
 
 public class Quantity
@@ -117,6 +119,7 @@ public class Quantity
     private void AssertIsTheSameMetric(Quantity other)
     {
         //todo same metric requirement verification to be refactored
+        //todo no way of knowing if the _metric is of the same system of units as the other._metric
         if (_metric.GetSymbol() != other._metric.GetSymbol())
         {
             throw new ArgumentException();
