@@ -13,15 +13,9 @@ public class Quantity
         _amount = amount;
     }
 
-    public Metric GetMetric()
-    {
-        return _metric;
-    }
+    public Metric GetMetric() => _metric;
 
-    public double GetAmount()
-    {
-        return _amount;
-    }
+    public double GetAmount() => _amount;
 
     public Quantity Add(Quantity quantity)
     {
@@ -118,9 +112,8 @@ public class Quantity
 
     private void AssertIsTheSameMetric(Quantity other)
     {
-        //todo same metric requirement verification to be refactored
         //todo no way of knowing if the _metric is of the same system of units as the other._metric
-        if (_metric.GetSymbol() != other._metric.GetSymbol())
+        if (!other._metric.Equals(_metric))
         {
             throw new ArgumentException();
         }
