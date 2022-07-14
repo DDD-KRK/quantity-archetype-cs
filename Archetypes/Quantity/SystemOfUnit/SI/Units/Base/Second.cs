@@ -14,6 +14,6 @@ class Second : SIBaseUnit
 
     public override string GetDefinition()
     {
-        return "... :)";
+        return "The second is the duration of 9,192,631,770 periods of the radiation corresponding to the transition between the two hyperfine levels of the ground state of the cesium 133 atom";
     }
 }

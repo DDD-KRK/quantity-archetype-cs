@@ -14,6 +14,6 @@ public class Kilogram : SIBaseUnit
 
     public override string GetDefinition()
     {
-        return "Unit of mass.";
+        return "The kilogram is the unit of mass; it is equal to the mass of the international prototype of the kilogram";
     }
 }

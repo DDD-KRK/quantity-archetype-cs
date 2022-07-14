@@ -9,7 +9,7 @@ public class Gram : SIBaseUnit
 
     public override string GetSymbol()
     {
-        return "h";
+        return "g";
     }
 
     public override string GetDefinition()
