@@ -1,15 +1,26 @@
+using Archetypes.Quantity.Conversion;
+
 namespace Archetypes.Quantity;
 
 public class SystemOfUnits : IEquatable<SystemOfUnits>
 {
     private readonly string _nameOfSystem;
     private readonly string _nameOfStandardizationBody;
+    private readonly StandardConversion[]? _standardConversions;
 
     public SystemOfUnits(string nameOfSystem, string nameOfStandardizationBody)
     {
         _nameOfSystem = nameOfSystem;
         _nameOfStandardizationBody = nameOfStandardizationBody;
     }
+
+    public StandardConversion[] StandardConversions
+    {
+        get => _standardConversions ?? Array.Empty<StandardConversion>();
+        protected init => _standardConversions = value;
+    }
+
+    #region IEquatable
 
     public bool Equals(SystemOfUnits? other)
     {
@@ -41,4 +52,6 @@ public class SystemOfUnits : IEquatable<SystemOfUnits>
     {
         return !Equals(left, right);
     }
+
+    #endregion
 }
