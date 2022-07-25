@@ -4,6 +4,8 @@ public abstract class Unit : Metric, IEquatable<Unit>
 {
     public abstract SystemOfUnits GetSystemOfUnits();
 
+    #region IEquatable
+
     public override bool Equals(object? obj)
     {
         return Equals(obj as Unit);
@@ -18,4 +20,6 @@ public abstract class Unit : Metric, IEquatable<Unit>
     {
         return (base.GetHashCode(), GetSystemOfUnits()).GetHashCode();
     }
+
+    #endregion
 }

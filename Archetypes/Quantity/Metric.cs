@@ -6,6 +6,8 @@ public abstract class Metric : IEquatable<Metric>
     public abstract string GetSymbol();
     public abstract string GetDefinition();
 
+    #region IEquatable
+
     public override bool Equals(object? obj)
     {
         return Equals(obj as Metric);
@@ -36,4 +38,6 @@ public abstract class Metric : IEquatable<Metric>
     {
         return !Equals(left, right);
     }
+
+    #endregion
 }
