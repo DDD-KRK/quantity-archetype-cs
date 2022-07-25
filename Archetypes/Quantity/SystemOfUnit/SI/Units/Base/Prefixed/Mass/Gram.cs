@@ -1,4 +1,4 @@
-namespace Archetypes.Quantity.SystemOfUnit.SI.Units.Base;
+namespace Archetypes.Quantity.SystemOfUnit.SI.Units.Base.Prefixed.Mass;
 
 public class Gram : SIBaseUnit
 {
@@ -14,6 +14,6 @@ public class Gram : SIBaseUnit
 
     public override string GetDefinition()
     {
-        return "Small unit of mass.";
+        return "The gram equals to 0.001 kilogram";
     }
 }

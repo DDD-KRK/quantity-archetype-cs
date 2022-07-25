@@ -2,17 +2,16 @@ using Archetypes.Quantity.SystemOfUnit.SI.Units.Base;
 
 namespace Archetypes.Quantity.SystemOfUnit.SI.Units.Derived;
 
-// todo @see DerivedUnit
-public class Velocity : SIDerivedUnit
+public class CubicMeter : SIDerivedUnit
 {
     public override string GetName()
     {
-        return "velocity";
+        return "cubic meter";
     }
 
     public override string GetSymbol()
     {
-        return "v";
+        return "m3";
     }
 
     public override string GetDefinition()
@@ -22,6 +21,6 @@ public class Velocity : SIDerivedUnit
 
     public override DerivedUnitTerm[] GetTerms()
     {
-        return new[] {new DerivedUnitTerm(new Meter(), 1), new DerivedUnitTerm(new Second(), -1)};
+        return new[] {new DerivedUnitTerm(new Meter(), 3)};
     }
 }
