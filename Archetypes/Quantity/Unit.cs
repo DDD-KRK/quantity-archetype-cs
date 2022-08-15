@@ -4,6 +4,11 @@ public abstract class Unit : Metric, IEquatable<Unit>
 {
     public abstract SystemOfUnits GetSystemOfUnits();
 
+    public string GetUniqueSymbol()
+    {
+        return GetSystemOfUnits().NameOfSystem + "_" + GetSymbol();
+    }
+    
     #region IEquatable
 
     public override bool Equals(object? obj)

@@ -4,13 +4,13 @@ namespace Archetypes.Quantity;
 
 public class SystemOfUnits : IEquatable<SystemOfUnits>
 {
-    private readonly string _nameOfSystem;
+    public string NameOfSystem { get; }
     private readonly string _nameOfStandardizationBody;
     private readonly StandardConversion[]? _standardConversions;
 
     public SystemOfUnits(string nameOfSystem, string nameOfStandardizationBody)
     {
-        _nameOfSystem = nameOfSystem;
+        NameOfSystem = nameOfSystem;
         _nameOfStandardizationBody = nameOfStandardizationBody;
     }
 
@@ -27,7 +27,7 @@ public class SystemOfUnits : IEquatable<SystemOfUnits>
         if (ReferenceEquals(null, other)) return false;
         if (ReferenceEquals(this, other)) return true;
 
-        return _nameOfSystem == other._nameOfSystem && _nameOfStandardizationBody == other._nameOfStandardizationBody;
+        return NameOfSystem == other.NameOfSystem && _nameOfStandardizationBody == other._nameOfStandardizationBody;
     }
 
     public override bool Equals(object? obj)
@@ -40,7 +40,7 @@ public class SystemOfUnits : IEquatable<SystemOfUnits>
 
     public override int GetHashCode()
     {
-        return (_nameOfSystem, _nameOfStandardizationBody).GetHashCode();
+        return (NameOfSystem, _nameOfStandardizationBody).GetHashCode();
     }
 
     public static bool operator ==(SystemOfUnits? left, SystemOfUnits? right)

@@ -14,10 +14,10 @@ public class SISystem : SystemOfUnits
         StandardConversions = new StandardConversion[]
         {
             new(new Kilogram(), new Gram(), SiPrefixes.Kilo),
-            new(new Meter(), new Decimetre(), SiPrefixes.Deci),
-            new(new Meter(), new Centimetre(), SiPrefixes.Centi),
-            new(new CubicMeter(), new CubicDecimetre(), Math.Pow(SiPrefixes.Deci, 3)),
-            new(new CubicMeter(), new CubicCentimetre(), Math.Pow(SiPrefixes.Centi, 3)),
+            new(new Decimetre(), new Meter(), SiPrefixes.Deci),
+            new(new Centimetre(), new Meter(), SiPrefixes.Centi),
+            new(new CubicDecimetre(), new CubicMeter(), Math.Pow(SiPrefixes.Deci, 3)),
+            new(new CubicCentimetre(), new CubicMeter(), Math.Pow(SiPrefixes.Centi, 3)),
         };
     }
 

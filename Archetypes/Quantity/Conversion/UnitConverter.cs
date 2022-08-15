@@ -15,6 +15,7 @@ public class UnitConverter
 
         foreach (var standardConversion in StandardConversions)
         {
+            // currency nie mozna tak przeliczac, bo w obie strony stawki sa rozne
             //todo no way of knowing if the source unit is of the same system of units as the quantity.metric
             if (standardConversion.SourceUnit.GetSymbol() == sourceMetric.GetSymbol() && standardConversion.TargetUnit == targetUnit)
             {
