@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Archetypes.Quantity;
 using Archetypes.Quantity.Conversion;
-using Archetypes.Test.Quantity.AssertObject;
-using NSubstitute;
+using Archetypes.Quantity.Test.AssertObject;
 using Xunit;
 
-namespace Archetypes.Test.Quantity.Conversion;
+namespace Archetypes.Quantity.Test.Conversion;
 
 public class UnitConverterTest
 {

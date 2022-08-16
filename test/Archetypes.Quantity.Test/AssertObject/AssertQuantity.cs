@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace Archetypes.Test.Quantity.AssertObject;
+namespace Archetypes.Quantity.Test.AssertObject;
 
 public class AssertQuantity
 {

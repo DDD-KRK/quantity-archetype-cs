@@ -1,9 +1,8 @@
-using Archetypes.Quantity;
 using Archetypes.Quantity.Conversion;
-using Archetypes.Test.Quantity.AssertObject;
+using Archetypes.Quantity.Test.AssertObject;
 using Xunit;
 
-namespace Archetypes.Test;
+namespace Archetypes.Quantity.Test;
 
 public class Example
 {

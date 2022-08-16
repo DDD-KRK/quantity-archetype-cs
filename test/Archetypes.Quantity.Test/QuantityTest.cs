@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Archetypes.Quantity;
 using Xunit;
 
-namespace Archetypes.Test.Quantity;
+namespace Archetypes.Quantity.Test;
 
 // todo rememebr to include in build process
 public class QuantityTest

@@ -26,8 +26,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Remove="Quantity\QuantityTest.cs" />
-      <None Include="Quantity\QuantityTest.cs" />
+      <Compile Remove="QuantityTest.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="QuantityTest.cs" />
     </ItemGroup>
 
 </Project>
