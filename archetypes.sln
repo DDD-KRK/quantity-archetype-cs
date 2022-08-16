@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Archetypes", "Archetypes\Ar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Archetypes.Test", "Archetypes.Test\Archetypes.Test.csproj", "{B8A6DE59-D950-4B28-BFCC-2EEC4B90DCAB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToBeReused", "ToBeReused\ToBeReused.csproj", "{F9225581-888E-4951-A1A1-DB5F50CA6E13}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,8 @@ Global
 		{B8A6DE59-D950-4B28-BFCC-2EEC4B90DCAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8A6DE59-D950-4B28-BFCC-2EEC4B90DCAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8A6DE59-D950-4B28-BFCC-2EEC4B90DCAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9225581-888E-4951-A1A1-DB5F50CA6E13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9225581-888E-4951-A1A1-DB5F50CA6E13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9225581-888E-4951-A1A1-DB5F50CA6E13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

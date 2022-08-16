@@ -1,14 +1,20 @@
 namespace Archetypes.Quantity;
 
-public abstract class Unit : Metric, IEquatable<Unit>
-{
-    public abstract SystemOfUnits GetSystemOfUnits();
+public class Unit: IEquatable<Unit>
+{ 
+    public SystemOfUnits SystemOfUnits { get; }
+    public string Name { get; }
+    public string Symbol { get; }
+    public string Definition { get; }
 
-    public string GetUniqueSymbol()
+    public Unit(SystemOfUnits systemOfUnits, string name, string symbol, string definition)
     {
-        return GetSystemOfUnits().NameOfSystem + "_" + GetSymbol();
+        SystemOfUnits = systemOfUnits;
+        Name = name;
+        Symbol = symbol;
+        Definition = definition;
     }
-    
+
     #region IEquatable
 
     public override bool Equals(object? obj)
@@ -18,12 +24,29 @@ public abstract class Unit : Metric, IEquatable<Unit>
 
     public bool Equals(Unit? other)
     {
-        return base.Equals(other) && other.GetSystemOfUnits().Equals(GetSystemOfUnits());
+        if (ReferenceEquals(null, other)) return false;
+        if (ReferenceEquals(this, other)) return true;
+
+         return other.GetType() == GetType() &&
+                other.SystemOfUnits.Equals(SystemOfUnits) &&
+                other.Name.Equals(Name) &&
+                other.Symbol.Equals(Symbol) &&
+                other.Definition.Equals(Definition);
+    }
+    
+    public static bool operator ==(Unit? left, Unit? right)
+    {
+        return Equals(left, right);
+    }
+
+    public static bool operator !=(Unit? left, Unit? right)
+    {
+        return !Equals(left, right);
     }
 
     public override int GetHashCode()
     {
-        return (base.GetHashCode(), GetSystemOfUnits()).GetHashCode();
+        return (SystemOfUnits, Name, Symbol, Definition).GetHashCode();
     }
 
     #endregion

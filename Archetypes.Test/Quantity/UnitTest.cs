@@ -9,19 +9,19 @@ public class UnitTest
     public static IEnumerable<object[]> GetTestData()
     {
         var sou1 = new SystemOfUnits("b", "ar");
-        var unitInstance = new UnitInstance("n", "s", "d", sou1);
-        yield return new object[] {true, unitInstance, unitInstance};
-        yield return new object[] {true, new UnitInstance("n", "s", "d", sou1), new UnitInstance("n", "s", "d", sou1)};
-        yield return new object[] {false, new UnitInstance("n", "s", "d", sou1), new UnitInstance("x", "x", "x", sou1)};
-        yield return new object[] {false, new UnitInstance("n", "s", "d", sou1), new UnitInstance("x", "s", "d", sou1)};
-        yield return new object[] {false, new UnitInstance("n", "s", "d", sou1), new UnitInstance("n", "x", "d", sou1)};
-        yield return new object[] {false, new UnitInstance("n", "s", "d", sou1), new UnitInstance("n", "s", "x", sou1)};
+        var unit = new Unit(sou1, "n", "s", "d");
+        yield return new object[] {true, unit, unit};
+        yield return new object[] {true, new Unit(sou1, "n", "s", "d"), new Unit(sou1, "n", "s", "d")};
+        yield return new object[] {false, new Unit(sou1, "n", "s", "d"), new Unit(sou1, "x", "x", "x")};
+        yield return new object[] {false, new Unit(sou1, "n", "s", "d"), new Unit(sou1, "x", "s", "d")};
+        yield return new object[] {false, new Unit(sou1, "n", "s", "d"), new Unit(sou1, "n", "x", "d")};
+        yield return new object[] {false, new Unit(sou1, "n", "s", "d"), new Unit(sou1, "n", "s", "x")};
         var sou2 = new SystemOfUnits("f", "oo");
-        yield return new object[] {false, new UnitInstance("n", "s", "d", sou1), new UnitInstance("n", "s", "d", sou2)};
-        yield return new object[] {false, new UnitInstance("n", "s", "d", sou1), new UnitInstance("x", "x", "x", sou2)};
-        yield return new object[] {false, new UnitInstance("n", "s", "d", sou1), new UnitInstance("x", "s", "d", sou2)};
-        yield return new object[] {false, new UnitInstance("n", "s", "d", sou1), new UnitInstance("n", "x", "d", sou2)};
-        yield return new object[] {false, new UnitInstance("n", "s", "d", sou1), new UnitInstance("n", "s", "x", sou2)};
+        yield return new object[] {false, new Unit(sou1, "n", "s", "d"), new Unit(sou2, "n", "s", "d")};
+        yield return new object[] {false, new Unit(sou1, "n", "s", "d"), new Unit(sou2, "x", "x", "x")};
+        yield return new object[] {false, new Unit(sou1, "n", "s", "d"), new Unit(sou2, "x", "s", "d")};
+        yield return new object[] {false, new Unit(sou1, "n", "s", "d"), new Unit(sou2, "n", "x", "d")};
+        yield return new object[] {false, new Unit(sou1, "n", "s", "d"), new Unit(sou2, "n", "s", "x")};
     }
 
     [Theory]

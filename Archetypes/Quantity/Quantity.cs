@@ -4,31 +4,27 @@ namespace Archetypes.Quantity;
 
 public class Quantity
 {
-    private readonly Metric _metric;
-    private readonly double _amount;
+    public Unit Unit { get; }
+    public double Amount { get; }
 
-    public Quantity(Metric metric, double amount)
+    public Quantity(Unit unit, double amount)
     {
-        _metric = metric;
-        _amount = amount;
+        Unit = unit;
+        Amount = amount;
     }
-
-    public Metric GetMetric() => _metric;
-
-    public double GetAmount() => _amount;
 
     public Quantity Add(Quantity quantity)
     {
-        AssertIsTheSameMetric(quantity);
+        AssertIsTheSameUnit(quantity);
 
-        return NewInstance(_amount + quantity._amount);
+        return NewInstance(Amount + quantity.Amount);
     }
 
     public Quantity Subtract(Quantity quantity)
     {
-        AssertIsTheSameMetric(quantity);
+        AssertIsTheSameUnit(quantity);
 
-        return NewInstance(_amount - quantity._amount);
+        return NewInstance(Amount - quantity.Amount);
     }
 
     public Quantity Multiply(double multiplier)
@@ -56,9 +52,9 @@ public class Quantity
         switch (policy.RoundingStrategy)
         {
             case RoundingStrategy.RoundUp:
-                return NewInstance(Math.Round(_amount, policy.NumberOfDigits, MidpointRounding.ToPositiveInfinity));
+                return NewInstance(Math.Round(Amount, policy.NumberOfDigits, MidpointRounding.ToPositiveInfinity));
             case RoundingStrategy.RoundDown:
-                return NewInstance(Math.Round(_amount, policy.NumberOfDigits, MidpointRounding.ToNegativeInfinity));
+                return NewInstance(Math.Round(Amount, policy.NumberOfDigits, MidpointRounding.ToNegativeInfinity));
             case RoundingStrategy.Round:
                 throw new NotImplementedException();
             case RoundingStrategy.RoundUpByStep:
@@ -76,9 +72,9 @@ public class Quantity
 
     public bool EqualTo(Quantity quantity)
     {
-        AssertIsTheSameMetric(quantity);
+        AssertIsTheSameUnit(quantity);
 
-        return Math.Abs(_amount - quantity._amount) < 0;
+        return Math.Abs(Amount - quantity.Amount) < 0;
     }
 
     //todo research the obj equality topic
@@ -107,15 +103,11 @@ public class Quantity
 
     private Quantity NewInstance(double amount)
     {
-        return new Quantity(_metric, amount);
+        return new Quantity(Unit, amount);
     }
 
-    private void AssertIsTheSameMetric(Quantity other)
+    private void AssertIsTheSameUnit(Quantity other)
     {
-        //todo no way of knowing if the _metric is of the same system of units as the other._metric
-        if (!other._metric.Equals(_metric))
-        {
-            throw new ArgumentException();
-        }
+        if (!other.Unit.Equals(Unit)) throw new ArgumentException("Operation allowed only on the same unit.", nameof(other));
     }
 }

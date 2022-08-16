@@ -13,8 +13,8 @@ public class UnitConverterTest
     public static IEnumerable<object[]> GetTestData()
     {
         var systemOfUnits = new SystemOfUnits("foo", "bar");
-        var unitA = new UnitInstance("A", "A", "...", systemOfUnits);
-        var unitB = new UnitInstance("B", "B", "...", systemOfUnits);
+        var unitA = new Unit( systemOfUnits, "A", "A", "...");
+        var unitB = new Unit( systemOfUnits, "B", "B", "...");
 
         yield return new object[]
         {
@@ -38,7 +38,7 @@ public class UnitConverterTest
     {
         //A
         var subject = new UnitConverter();
-        subject.RegisterStandardConversions(new[] {standardConversion});
+        subject.RegisterStandardConversions(standardConversion);
 
         //A
         var quantity = subject.Convert(sourceQuantity, targetUnit);
@@ -52,10 +52,15 @@ public class UnitConverterTest
     {
         //A
         var subject = new UnitConverter();
+        subject.RegisterStandardConversions(new StandardConversion(
+            new Unit(new SystemOfUnits("c", "c"),"c","c","c"),
+            new Unit(new SystemOfUnits("d", "d"),"d","d","d"),
+            1
+            ));
 
         //A A
-        var targetUnit = Substitute.For<Unit>();
-        var sourceQuantity = Substitute.For<Archetypes.Quantity.Quantity>(Substitute.For<Unit>(), 1);
+        var targetUnit = new Unit(new SystemOfUnits("a", "a"),"a","a","a");
+        var sourceQuantity = new Archetypes.Quantity.Quantity(new Unit(new SystemOfUnits("b", "b"),"b","b","b"), 1);
 
         var exception = Assert.Throws<Exception>(() => subject.Convert(sourceQuantity, targetUnit));
         Assert.Equal("Unable to convert. No standard conversion found.", exception.Message);

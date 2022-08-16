@@ -28,7 +28,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Quantity\SystemOfUnit" />
+      <Compile Remove="Quantity\QuantityTest.cs" />
+      <None Include="Quantity\QuantityTest.cs" />
     </ItemGroup>
 
 </Project>

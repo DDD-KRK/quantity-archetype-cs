@@ -4,6 +4,7 @@ using Xunit;
 
 namespace Archetypes.Test.Quantity;
 
+// todo rememebr to include in build process
 public class QuantityTest
 {
     public static IEnumerable<object[]> GetTestData()

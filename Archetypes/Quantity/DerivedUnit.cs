@@ -1,11 +1,15 @@
 namespace Archetypes.Quantity;
 
-//todo covnert back to normal class and create factory for derived units
-public abstract class DerivedUnit : Unit
+public class DerivedUnit : Unit
 {
-    // todo at least one
     /// <summary>
-    /// Sequence matters
+    /// At least one element. Sequence matters.
     /// </summary>
-    public abstract DerivedUnitTerm[] GetTerms();
+    public DerivedUnitTerm[] Terms { get; }
+
+    public DerivedUnit(SystemOfUnits systemOfUnits, string name, string symbol, string definition, DerivedUnitTerm[] terms) : base(systemOfUnits, name, symbol, definition)
+    {
+        if (terms.Length == 0) throw new ArgumentException("Value cannot be an empty collection.", nameof(terms));
+        Terms = terms;
+    }
 }

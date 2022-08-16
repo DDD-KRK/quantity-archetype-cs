@@ -2,17 +2,17 @@ namespace Archetypes.Quantity.SystemOfUnit.SI;
 
 public static class SIUnitFactory
 {
-    private static readonly Dictionary<string, AlternativeUnit> AvailableUnits = new ();
+    private static readonly Dictionary<string, Unit> AvailableUnits = new ();
     static SIUnitFactory()
     {
         var siSystem = new SISystem();
-        AvailableUnits.Add(SIUnit.Kilogram, new AlternativeUnit(siSystem, "Kilogram", "kg", "..."));
-        AvailableUnits.Add(SIUnit.Decagram, new AlternativeUnit(siSystem, "Decagram", "dag", "..."));
-        AvailableUnits.Add(SIUnit.Gram, new AlternativeUnit(siSystem, "Gram", "g", "..."));
+        AvailableUnits.Add(SIUnit.Kilogram, new Unit(siSystem, "Kilogram", "kg", "..."));
+        AvailableUnits.Add(SIUnit.Decagram, new Unit(siSystem, "Decagram", "dag", "..."));
+        AvailableUnits.Add(SIUnit.Gram, new Unit(siSystem, "Gram", "g", "..."));
         
     }
 
-    public static AlternativeUnit? CreateFromSymbol(string symbol)
+    public static Unit? CreateFromSymbol(string symbol)
     {
         return AvailableUnits.GetValueOrDefault(symbol);
     }
@@ -27,7 +27,7 @@ public static class SIUnit
 
 public static class AvailableUnits
 {
-    public static AlternativeUnit[] Get()
+    public static Unit[] Get()
     {
         return new[] {SIUnitFactory.CreateFromSymbol(SIUnit.Kilogram), SIUnitFactory.CreateFromSymbol(SIUnit.Gram)};
     }

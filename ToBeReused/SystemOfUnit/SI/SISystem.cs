@@ -14,6 +14,9 @@ public class SISystem : SystemOfUnits
         StandardConversions = new StandardConversion[]
         {
             new(new Kilogram(), new Gram(), SiPrefixes.Kilo),
+            new(new Decagram(), new Gram(), SiPrefixes.Deca),
+            new(new Hectogram(), new Gram(), SiPrefixes.Hecto),
+            
             new(new Decimetre(), new Meter(), SiPrefixes.Deci),
             new(new Centimetre(), new Meter(), SiPrefixes.Centi),
             new(new CubicDecimetre(), new CubicMeter(), Math.Pow(SiPrefixes.Deci, 3)),
@@ -46,3 +49,4 @@ public class SISystem : SystemOfUnits
         public const double Yocto = 0.000000000000000000000001;
     }
 }
+

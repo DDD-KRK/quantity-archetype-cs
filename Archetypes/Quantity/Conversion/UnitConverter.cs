@@ -4,6 +4,11 @@ public class UnitConverter
 {
     private List<StandardConversion> StandardConversions { get; } = new();
 
+    public void RegisterStandardConversions(StandardConversion standardConversion)
+    {
+        StandardConversions.Add(standardConversion);
+    }
+
     public void RegisterStandardConversions(IEnumerable<StandardConversion> standardConversions)
     {
         StandardConversions.AddRange(standardConversions);
@@ -11,20 +16,20 @@ public class UnitConverter
 
     public Quantity Convert(Quantity sourceQuantity, Unit targetUnit)
     {
-        var sourceMetric = sourceQuantity.GetMetric();
+        var sourceUnit = sourceQuantity.Unit;
 
         foreach (var standardConversion in StandardConversions)
         {
-            // currency nie mozna tak przeliczac, bo w obie strony stawki sa rozne
-            //todo no way of knowing if the source unit is of the same system of units as the quantity.metric
-            if (standardConversion.SourceUnit.GetSymbol() == sourceMetric.GetSymbol() && standardConversion.TargetUnit == targetUnit)
+            // currency nie mozna tak przeliczac, bo w obie strony stawki sa rozne - OneWayConverter + TwoWayConverter;
+            // FixedConversionFactorConverter + 
+            if (standardConversion.SourceUnit.Equals(sourceUnit) && standardConversion.TargetUnit.Equals(targetUnit))
             {
-                return new Quantity(targetUnit, sourceQuantity.GetAmount() * standardConversion.ConversionFactor);
+                return new Quantity(targetUnit, sourceQuantity.Amount * standardConversion.ConversionFactor);
             }
 
-            if (standardConversion.TargetUnit.GetSymbol() == sourceMetric.GetSymbol() && standardConversion.SourceUnit == targetUnit)
+            if (standardConversion.TargetUnit.Equals(sourceUnit) && standardConversion.SourceUnit.Equals(targetUnit))
             {
-                return new Quantity(targetUnit, sourceQuantity.GetAmount() / standardConversion.ConversionFactor);
+                return new Quantity(targetUnit, sourceQuantity.Amount / standardConversion.ConversionFactor);
             }
         }
 
