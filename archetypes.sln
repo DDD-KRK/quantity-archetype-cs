@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Archetypes", "Archetypes\Archetypes.csproj", "{7B27ACD8-8C1A-4A5C-8711-6F81D4120E89}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Archetypes.Quantity", "src\Archetypes.Quantity\Archetypes.Quantity.csproj", "{7B27ACD8-8C1A-4A5C-8711-6F81D4120E89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Archetypes.Test", "Archetypes.Test\Archetypes.Test.csproj", "{B8A6DE59-D950-4B28-BFCC-2EEC4B90DCAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Archetypes.Quantity.Test", "test\Archetypes.Quantity.Test\Archetypes.Quantity.Test.csproj", "{B8A6DE59-D950-4B28-BFCC-2EEC4B90DCAB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToBeReused", "ToBeReused\ToBeReused.csproj", "{F9225581-888E-4951-A1A1-DB5F50CA6E13}"
 EndProject

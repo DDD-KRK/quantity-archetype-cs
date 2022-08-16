@@ -13,7 +13,7 @@ public class AssertQuantity
 
     public AssertQuantity IsEqualTo(Archetypes.Quantity.Quantity other)
     {
-        //todo refactor when Quantity.Equals is implemented
+        //todo refactor when Archetypes.Quantity.Equals is implemented
         Assert.Equal(other.Amount, _quantity.Amount);
         Assert.Equal(other.Unit, _quantity.Unit);
        

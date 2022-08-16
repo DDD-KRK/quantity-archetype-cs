@@ -83,7 +83,7 @@ public class Quantity
     //     if (ReferenceEquals(this, obj)) return true;
     //     if (ReferenceEquals(obj, null)) return false;
     //     if (GetType() != obj.GetType()) return false;
-    //     return EqualTo(obj as Quantity);
+    //     return EqualTo(obj as Archetypes.Quantity);
     // }
     //
     // public override int GetHashCode()
