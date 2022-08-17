@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Archetypes.Quantity;
 using Xunit;
 
 namespace Archetypes.Quantity.Test;
@@ -13,7 +12,7 @@ public class QuantityTest
         var unitA = new UnitInstance("A", "a", "d", sou1);
         var unitB = new UnitInstance("B", "b", "d", sou1);
 
-        var quantityInstance = new Archetypes.Quantity.Quantity(unitA, 1);
+        var quantityInstance = new Quantity(unitA, 1);
 
         yield return new object[] {true, quantityInstance, quantityInstance};
         
@@ -26,7 +25,7 @@ public class QuantityTest
 
     [Theory]
     [MemberData(nameof(GetTestData))]
-    public void TestMetricEquability(bool expectedResult, Archetypes.Quantity.Quantity a, Archetypes.Quantity.Quantity b)
+    public void TestMetricEquability(bool expectedResult, Quantity a, Quantity b)
     {
         Assert.Equal(expectedResult, a.Equals(b));
         Assert.Equal(expectedResult, a == b);

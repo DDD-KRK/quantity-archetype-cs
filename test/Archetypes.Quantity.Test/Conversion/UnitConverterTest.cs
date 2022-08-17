@@ -17,22 +17,22 @@ public class UnitConverterTest
         yield return new object[]
         {
             // multiply when source to target
-            new StandardConversion(unitA, unitB, 1.1), new Archetypes.Quantity.Quantity(unitA, 1000), unitB, new Archetypes.Quantity.Quantity(unitB, 1100),
+            new StandardConversion(unitA, unitB, 1.1), new Quantity(unitA, 1000), unitB, new Quantity(unitB, 1100),
         };
         yield return new object[]
         {
             // divide when target to source
             new StandardConversion(unitA, unitB, 1.1),
-            new Archetypes.Quantity.Quantity(unitB, 1000),
+            new Quantity(unitB, 1000),
             unitA,
-            new Archetypes.Quantity.Quantity(unitA, 909.090909090909),
+            new Quantity(unitA, 909.090909090909),
         };
     }
 
     [Theory]
     [MemberData(nameof(GetTestData))]
-    public void Convert_Test(StandardConversion standardConversion, Archetypes.Quantity.Quantity sourceQuantity, Unit targetUnit,
-        Archetypes.Quantity.Quantity expectedQuantity)
+    public void Convert_Test(StandardConversion standardConversion, Quantity sourceQuantity, Unit targetUnit,
+        Quantity expectedQuantity)
     {
         //A
         var subject = new UnitConverter();
@@ -58,13 +58,13 @@ public class UnitConverterTest
 
         //A A
         var targetUnit = new Unit(new SystemOfUnits("a", "a"),"a","a","a");
-        var sourceQuantity = new Archetypes.Quantity.Quantity(new Unit(new SystemOfUnits("b", "b"),"b","b","b"), 1);
+        var sourceQuantity = new Quantity(new Unit(new SystemOfUnits("b", "b"),"b","b","b"), 1);
 
         var exception = Assert.Throws<Exception>(() => subject.Convert(sourceQuantity, targetUnit));
         Assert.Equal("Unable to convert. No standard conversion found.", exception.Message);
     }
 
-    private static AssertQuantity AssertThat(Archetypes.Quantity.Quantity quantity)
+    private static AssertQuantity AssertThat(Quantity quantity)
     {
         return new AssertQuantity(quantity);
     }

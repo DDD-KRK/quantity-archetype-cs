@@ -13,18 +13,18 @@ public class Example
         var kilogramUnit = new Unit(systemOfUnits, "kilogram", "kg", "...");
         var gramUnit = new Unit(systemOfUnits, "gram", "g", "...");
         
-        var oneKilogram = new Archetypes.Quantity.Quantity(kilogramUnit, 1);
-        var oneThousandGrams = new Archetypes.Quantity.Quantity(gramUnit, 1000);
+        var oneKilogram = new Quantity(kilogramUnit, 1);
+        var oneThousandGrams = new Quantity(gramUnit, 1000);
         
         var subject = new UnitConverter();
         subject.RegisterStandardConversions(new StandardConversion(kilogramUnit, gramUnit, 1000.0));
 
         AssertThat(subject.Convert(oneKilogram, gramUnit)).IsEqualTo(oneThousandGrams);
         AssertThat(subject.Convert(oneThousandGrams, kilogramUnit)).IsEqualTo(oneKilogram);
-        AssertThat(subject.Convert(new Archetypes.Quantity.Quantity(gramUnit, 27), kilogramUnit)).IsEqualTo(new Archetypes.Quantity.Quantity(kilogramUnit, 0.027));
+        AssertThat(subject.Convert(new Quantity(gramUnit, 27), kilogramUnit)).IsEqualTo(new Quantity(kilogramUnit, 0.027));
     }
     
-    private static AssertQuantity AssertThat(Archetypes.Quantity.Quantity quantity)
+    private static AssertQuantity AssertThat(Quantity quantity)
     {
         return new AssertQuantity(quantity);
     }

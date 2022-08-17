@@ -4,14 +4,14 @@ namespace Archetypes.Quantity.Test.AssertObject;
 
 public class AssertQuantity
 {
-    private readonly Archetypes.Quantity.Quantity _quantity;
+    private readonly Quantity _quantity;
 
-    public AssertQuantity(Archetypes.Quantity.Quantity quantity)
+    public AssertQuantity(Quantity quantity)
     {
         _quantity = quantity;
     }
 
-    public AssertQuantity IsEqualTo(Archetypes.Quantity.Quantity other)
+    public AssertQuantity IsEqualTo(Quantity other)
     {
         //todo refactor when Archetypes.Quantity.Equals is implemented
         Assert.Equal(other.Amount, _quantity.Amount);
