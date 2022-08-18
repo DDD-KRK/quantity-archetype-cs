@@ -25,12 +25,4 @@
         <ProjectReference Include="..\..\src\Archetypes.Quantity\Archetypes.Quantity.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Compile Remove="QuantityTest.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Include="QuantityTest.cs" />
-    </ItemGroup>
-
 </Project>

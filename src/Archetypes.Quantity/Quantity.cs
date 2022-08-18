@@ -2,7 +2,7 @@ using Archetypes.Quantity.Rounding;
 
 namespace Archetypes.Quantity;
 
-public class Quantity
+public class Quantity: IEquatable<Quantity>
 {
     public Unit Unit { get; }
     public double Amount { get; }
@@ -74,22 +74,8 @@ public class Quantity
     {
         AssertIsTheSameUnit(quantity);
 
-        return Math.Abs(Amount - quantity.Amount) < 0;
+        return Math.Abs(Amount - quantity.Amount) <= 0;
     }
-
-    //todo research the obj equality topic
-    // public override bool Equals(object? obj)
-    // {
-    //     if (ReferenceEquals(this, obj)) return true;
-    //     if (ReferenceEquals(obj, null)) return false;
-    //     if (GetType() != obj.GetType()) return false;
-    //     return EqualTo(obj as Archetypes.Quantity);
-    // }
-    //
-    // public override int GetHashCode()
-    // {
-    //     return HashCode.Combine(_metric, _amount);
-    // }
 
     public bool GreaterThan(Quantity quantity)
     {
@@ -110,4 +96,37 @@ public class Quantity
     {
         if (!other.Unit.Equals(Unit)) throw new ArgumentException("Operation allowed only on the same unit.", nameof(other));
     }
+
+    #region IEquatable
+
+    public override bool Equals(object? obj)
+    {
+        return Equals(obj as Quantity);
+    }
+
+    public bool Equals(Quantity? other)
+    {
+        if (ReferenceEquals(null, other)) return false;
+        if (ReferenceEquals(this, other)) return true;
+
+        return other.Unit.Equals(Unit) && Math.Abs(Amount - other.Amount) <= 0;
+    }
+
+    public override int GetHashCode()
+    {
+        return (Unit, Amount).GetHashCode();
+    }
+
+    public static bool operator ==(Quantity? left, Quantity? right)
+    {
+        return Equals(left, right);
+    }
+
+    public static bool operator !=(Quantity? left, Quantity? right)
+    {
+        return !Equals(left, right);
+    }
+
+    #endregion
+
 }
