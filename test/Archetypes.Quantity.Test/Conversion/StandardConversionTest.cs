@@ -13,13 +13,26 @@ public class StandardConversionTest
         var expectedSourceUnit = UnitMother.GetUnique();
         var expectedTargetUnit = UnitMother.GetUnique();
         const double expectedConversionFactor = 9000.1;
+        const bool expectedOneWayConversion = true;
 
         //Act
-        var result = new StandardConversion(expectedSourceUnit, expectedTargetUnit, expectedConversionFactor);
+        var result = new StandardConversion(expectedSourceUnit, expectedTargetUnit, expectedConversionFactor, expectedOneWayConversion);
 
         //Assert
         Assert.Same(expectedSourceUnit, result.SourceUnit);
         Assert.Same(expectedTargetUnit, result.TargetUnit);
         Assert.Equal(expectedConversionFactor, result.ConversionFactor);
+        Assert.Equal(expectedOneWayConversion, result.OneWayConversion);
+    }
+
+    [Fact]
+    public void DefaultOneWayConversionIsFalse()
+    {
+        //Arrange
+        //Act
+        var result = new StandardConversion(UnitMother.GetUnique(), UnitMother.GetUnique(), 1.0);
+
+        //Assert
+        Assert.False(result.OneWayConversion);
     }
 }
