@@ -7,13 +7,19 @@ public class SystemOfUnitsTest
 {
     public static IEnumerable<object?[]> GetTestData()
     {
-        var systemOfUnits = new SystemOfUnits("xa", "xb");
+        var systemOfUnits = new SystemOfUnits("a", "b");
+
+        //same instance
         yield return new object?[] {true, systemOfUnits, systemOfUnits};
-        yield return new object?[] {true, new SystemOfUnits("a", "b"), new SystemOfUnits("a", "b")};
-        yield return new object?[] {false, new SystemOfUnits("a", "b"), null};
-        yield return new object?[] {false, new SystemOfUnits("a", "b"), new SystemOfUnits("xa", "b")};
-        yield return new object?[] {false, new SystemOfUnits("a", "b"), new SystemOfUnits("a", "xb")};
-        yield return new object?[] {false, new SystemOfUnits("a", "b"), new SystemOfUnits("xa", "xb")};
+        yield return new object?[] {false, systemOfUnits, null};
+
+        //different instance, same values
+        yield return new object?[] {true, systemOfUnits, new SystemOfUnits("a", "b")};
+
+        //different instance, different values
+        yield return new object?[] {false, systemOfUnits, new SystemOfUnits("xa", "xb")};
+        yield return new object?[] {false, systemOfUnits, new SystemOfUnits("xa", "b")};
+        yield return new object?[] {false, systemOfUnits, new SystemOfUnits("a", "xb")};
     }
 
     [Theory]

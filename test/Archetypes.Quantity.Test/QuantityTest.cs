@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Archetypes.Quantity.Test.MotherObject;
 using Xunit;
 
 namespace Archetypes.Quantity.Test;
@@ -7,18 +8,19 @@ public class QuantityTest
 {
     public static IEnumerable<object?[]> GetTestData()
     {
-        var sou1 = new SystemOfUnits("b", "ar");
-        var unitA = new Unit(sou1,"A", "a", "d");
-        var unitB = new Unit(sou1,"B", "b", "d");
+        var unitA = UnitMother.GetUnique();
+        var oneUnitA = new Quantity(unitA, 1);
 
-        var quantity = new Quantity(unitA, 1);
-        yield return new object?[] {true, quantity, quantity};
+        //same instance
+        yield return new object?[] {true, oneUnitA, oneUnitA};
+        yield return new object?[] {false, oneUnitA, null};
 
-        yield return new object?[] {true, new Quantity(unitB, 1), new Quantity(unitB, 1)};
-        yield return new object?[] {false, new Quantity(unitB, 1), null};
+        //different instance, same values
+        yield return new object?[] {true, oneUnitA, new Quantity(unitA, 1)};
 
-        yield return new object?[] {false, new Quantity(unitB, 1), new Quantity(unitB, 1.1)};
-        yield return new object?[] {false, new Quantity(unitA, 1), new Quantity(unitB, 1)};
+        //different instance, different values
+        yield return new object?[] {false, oneUnitA, new Quantity(unitA, 1.1)};
+        yield return new object?[] {false, oneUnitA, new Quantity(UnitMother.GetUnique(), 1)};
     }
 
     [Theory]

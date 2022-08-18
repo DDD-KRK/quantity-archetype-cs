@@ -9,19 +9,26 @@ public class UnitTest
     {
         var sou1 = new SystemOfUnits("b", "ar");
         var unit = new Unit(sou1, "n", "s", "d");
+
+        //same instance
         yield return new object?[] {true, unit, unit};
-        yield return new object?[] {true, new Unit(sou1, "n", "s", "d"), new Unit(sou1, "n", "s", "d")};
-        yield return new object?[] {false, new Unit(sou1, "n", "s", "d"), new Unit(sou1, "x", "x", "x")};
-        yield return new object?[] {false, new Unit(sou1, "n", "s", "d"), null};
-        yield return new object?[] {false, new Unit(sou1, "n", "s", "d"), new Unit(sou1, "x", "s", "d")};
-        yield return new object?[] {false, new Unit(sou1, "n", "s", "d"), new Unit(sou1, "n", "x", "d")};
-        yield return new object?[] {false, new Unit(sou1, "n", "s", "d"), new Unit(sou1, "n", "s", "x")};
+        yield return new object?[] {false, unit, null};
+
+        //different instance, same values
+        yield return new object?[] {true, unit, new Unit(sou1, "n", "s", "d")};
+
+        //different instance, different values
+        yield return new object?[] {false, unit, new Unit(sou1, "x", "x", "x")};
+        yield return new object?[] {false, unit, new Unit(sou1, "x", "s", "d")};
+        yield return new object?[] {false, unit, new Unit(sou1, "n", "x", "d")};
+        yield return new object?[] {false, unit, new Unit(sou1, "n", "s", "x")};
+
         var sou2 = new SystemOfUnits("f", "oo");
-        yield return new object?[] {false, new Unit(sou1, "n", "s", "d"), new Unit(sou2, "n", "s", "d")};
-        yield return new object?[] {false, new Unit(sou1, "n", "s", "d"), new Unit(sou2, "x", "x", "x")};
-        yield return new object?[] {false, new Unit(sou1, "n", "s", "d"), new Unit(sou2, "x", "s", "d")};
-        yield return new object?[] {false, new Unit(sou1, "n", "s", "d"), new Unit(sou2, "n", "x", "d")};
-        yield return new object?[] {false, new Unit(sou1, "n", "s", "d"), new Unit(sou2, "n", "s", "x")};
+        yield return new object?[] {false, unit, new Unit(sou2, "n", "s", "d")};
+        yield return new object?[] {false, unit, new Unit(sou2, "x", "x", "x")};
+        yield return new object?[] {false, unit, new Unit(sou2, "x", "s", "d")};
+        yield return new object?[] {false, unit, new Unit(sou2, "n", "x", "d")};
+        yield return new object?[] {false, unit, new Unit(sou2, "n", "s", "x")};
     }
 
     [Theory]

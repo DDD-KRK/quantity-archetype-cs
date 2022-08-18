@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Archetypes.Quantity.Conversion;
 using Archetypes.Quantity.Test.AssertObject;
+using Archetypes.Quantity.Test.MotherObject;
 using Xunit;
 
 namespace Archetypes.Quantity.Test.Conversion;
@@ -10,33 +11,32 @@ public class UnitConverterTest
 {
     public static IEnumerable<object[]> GetTestData()
     {
-        var systemOfUnits = new SystemOfUnits("foo", "bar");
-        var unitA = new Unit( systemOfUnits, "A", "A", "...");
-        var unitB = new Unit( systemOfUnits, "B", "B", "...");
+        var twoWayStandardConversion = StandardConversionMother.GetUniqueTwoWayConversion(1.1);
+        var sourceUnit = twoWayStandardConversion.SourceUnit;
+        var targetUnit = twoWayStandardConversion.TargetUnit;
 
         yield return new object[]
         {
             // multiply when source to target
-            new StandardConversion(unitA, unitB, 1.1), new Quantity(unitA, 1000), unitB, new Quantity(unitB, 1100),
+            twoWayStandardConversion, new Quantity(sourceUnit, 1000), targetUnit, new Quantity(targetUnit, 1100)
         };
         yield return new object[]
         {
             // divide when target to source
-            new StandardConversion(unitA, unitB, 1.1),
-            new Quantity(unitB, 1000),
-            unitA,
-            new Quantity(unitA, 909.090909090909),
+            twoWayStandardConversion, new Quantity(targetUnit, 1000), sourceUnit, new Quantity(sourceUnit, 909.090909090909)
         };
     }
 
     [Theory]
     [MemberData(nameof(GetTestData))]
-    public void Convert_Test(StandardConversion standardConversion, Quantity sourceQuantity, Unit targetUnit,
+    public void Convert_Test(StandardConversion twoWayStandardConversion, Quantity sourceQuantity, Unit targetUnit,
         Quantity expectedQuantity)
     {
+        //todo  rewrite this test: one,two way conversions
         //A
+        Assert.False(twoWayStandardConversion.OneWayConversion, "Expected two way standard conversion");
         var subject = new UnitConverter();
-        subject.RegisterStandardConversions(standardConversion);
+        subject.RegisterStandardConversions(twoWayStandardConversion);
 
         //A
         var quantity = subject.Convert(sourceQuantity, targetUnit);
@@ -46,19 +46,39 @@ public class UnitConverterTest
     }
 
     [Fact]
+    public void Convert_MultipliesAmountByConversionFactor_OnSourceToTargetUnitConversion()
+    {
+        //Arrange
+        throw new NotImplementedException();
+
+        //Act
+
+        //Assert
+    }
+
+    [Fact]
+    public void Convert_DividesAmountByConversionFactor_OnTargetToSourceUnitConversion()
+    {
+        //Arrange
+        throw new NotImplementedException();
+
+        //Act
+
+        //Assert
+    }
+
+    //todo one way conversion standard: multiply and throw Exception
+
+    [Fact]
     public void Convert_Throws_Exception_When_No_Conversion_Standard_Found()
     {
         //A
         var subject = new UnitConverter();
-        subject.RegisterStandardConversions(new StandardConversion(
-            new Unit(new SystemOfUnits("c", "c"),"c","c","c"),
-            new Unit(new SystemOfUnits("d", "d"),"d","d","d"),
-            1
-            ));
+        subject.RegisterStandardConversions(StandardConversionMother.GetUniqueTwoWayConversion());
 
         //A A
-        var targetUnit = new Unit(new SystemOfUnits("a", "a"),"a","a","a");
-        var sourceQuantity = new Quantity(new Unit(new SystemOfUnits("b", "b"),"b","b","b"), 1);
+        var targetUnit = UnitMother.GetUnique();
+        var sourceQuantity = new Quantity(UnitMother.GetUnique(), 1);
 
         var exception = Assert.Throws<Exception>(() => subject.Convert(sourceQuantity, targetUnit));
         Assert.Equal("Unable to convert. No standard conversion found.", exception.Message);
