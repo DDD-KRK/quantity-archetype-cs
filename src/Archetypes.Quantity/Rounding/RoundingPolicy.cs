@@ -7,7 +7,7 @@ public class RoundingPolicy
     public int RoundingDigit { get; }
     public double RoundingStep { get; }
 
-    public RoundingPolicy(RoundingStrategy roundingStrategy, int? numberOfDigits, int? roundingDigit, double? roundingStep)
+    public RoundingPolicy(RoundingStrategy roundingStrategy, int? numberOfDigits = null, int? roundingDigit = null, double? roundingStep = null)
     {
         //todo verify required parameters per rounding strategy
         RoundingStrategy = roundingStrategy;
