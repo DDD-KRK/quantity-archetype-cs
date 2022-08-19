@@ -31,6 +31,6 @@ public class UnitConverter
             }
         }
 
-        throw new Exception("Unable to convert. No standard conversion found.");
+        throw new NoMatchingStandardConversionException(sourceUnit, targetUnit);
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using Archetypes.Quantity.Conversion;
 using Archetypes.Quantity.Test.AssertObject;
 using Archetypes.Quantity.Test.MotherObject;
@@ -17,8 +16,7 @@ public class UnitConverterTest
         subject.RegisterStandardConversions(StandardConversionMother.GetUniqueOneWayConversion());
 
         //Act, Assert
-        var exception = Assert.Throws<Exception>(() => subject.Convert(new Quantity(UnitMother.GetUnique(), 1), UnitMother.GetUnique()));
-        Assert.Equal("Unable to convert. No standard conversion found.", exception.Message);
+        Assert.Throws<NoMatchingStandardConversionException>(() => subject.Convert(new Quantity(UnitMother.GetUnique(), 1), UnitMother.GetUnique()));
     }
 
     [Fact]
@@ -75,9 +73,9 @@ public class UnitConverterTest
         subject.RegisterStandardConversions(oneWayStandardConversion);
 
         //Act, Assert
-        var exception = Assert.Throws<Exception>(() =>
-            subject.Convert(new Quantity(oneWayStandardConversion.TargetUnit, 1), oneWayStandardConversion.SourceUnit));
-        Assert.Equal("Unable to convert. No standard conversion found.", exception.Message);
+        Assert.Throws<NoMatchingStandardConversionException>(
+            () => subject.Convert(new Quantity(oneWayStandardConversion.TargetUnit, 1), oneWayStandardConversion.SourceUnit)
+        );
     }
 
     private static AssertQuantity AssertThat(Quantity quantity)
