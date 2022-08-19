@@ -51,6 +51,35 @@ public class UnitConverterTest
         AssertThat(quantity).IsEqualTo(new Quantity(twoWayStandardConversion.SourceUnit, 909.090909090909));
     }
 
+    [Fact]
+    public void ConvertWithOneWayStandardConversion_MultipliesAmountByConversionFactor_OnSourceToTargetUnitConversion()
+    {
+        //Arrange
+        var oneWayStandardConversion = StandardConversionMother.GetUniqueOneWayConversion(1.2);
+        var subject = new UnitConverter();
+        subject.RegisterStandardConversions(oneWayStandardConversion);
+
+        //Act
+        var quantity = subject.Convert(new Quantity(oneWayStandardConversion.SourceUnit, 1000), oneWayStandardConversion.TargetUnit);
+
+        //Assert
+        AssertThat(quantity).IsEqualTo(new Quantity(oneWayStandardConversion.TargetUnit, 1200));
+    }
+
+    [Fact]
+    public void ConvertWithOneWayStandardConversion_ThrowsException_OnTargetToSourceUnitConversion()
+    {
+        //Arrange
+        var oneWayStandardConversion = StandardConversionMother.GetUniqueOneWayConversion();
+        var subject = new UnitConverter();
+        subject.RegisterStandardConversions(oneWayStandardConversion);
+
+        //Act, Assert
+        var exception = Assert.Throws<Exception>(() =>
+            subject.Convert(new Quantity(oneWayStandardConversion.TargetUnit, 1), oneWayStandardConversion.SourceUnit));
+        Assert.Equal("Unable to convert. No standard conversion found.", exception.Message);
+    }
+
     private static AssertQuantity AssertThat(Quantity quantity)
     {
         return new AssertQuantity(quantity);

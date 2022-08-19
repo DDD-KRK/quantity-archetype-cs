@@ -20,14 +20,12 @@ public class UnitConverter
 
         foreach (var standardConversion in StandardConversions)
         {
-            // currency nie mozna tak przeliczac, bo w obie strony stawki sa rozne - OneWayConverter + TwoWayConverter;
-            // FixedConversionFactorConverter + 
             if (standardConversion.SourceUnit.Equals(sourceUnit) && standardConversion.TargetUnit.Equals(targetUnit))
             {
                 return new Quantity(targetUnit, sourceQuantity.Amount * standardConversion.ConversionFactor);
             }
 
-            if (standardConversion.TargetUnit.Equals(sourceUnit) && standardConversion.SourceUnit.Equals(targetUnit))
+            if (!standardConversion.OneWayConversion && standardConversion.TargetUnit.Equals(sourceUnit) && standardConversion.SourceUnit.Equals(targetUnit))
             {
                 return new Quantity(targetUnit, sourceQuantity.Amount / standardConversion.ConversionFactor);
             }
